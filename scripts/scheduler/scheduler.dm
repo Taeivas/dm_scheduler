@@ -8,8 +8,7 @@ scheduler
 			src.arguments = arguments
 		var
 			name
-			scheduler
-				timing/timing
+			scheduler/timing/timing
 			datum
 			callback
 			arguments
@@ -57,7 +56,7 @@ scheduler
 			start_time
 			interval
 		proc
-			NextExecution(now)
+			NextExecution(now, scheduler/datetime/datetime)
 				return (start_time + interval) < now
 		cron
 			New(minute = "*", hour = "*", day = "*", month = "*", day_of_week = "*")
@@ -96,21 +95,20 @@ scheduler
 						return Range(start, end)
 					else
 						return clamp(text2num(field), min_value, max_value)
-			NextExecution()
+			NextExecution(now, scheduler/datetime/datetime)
 				if((world.time - last_exec) >= 10)
 				else return FALSE
-				var/scheduler/datetime/now = new
-				if(now.second == 0)
+				if(datetime.second == 0)
 				else return FALSE
-				if(now.minute in minute)
+				if(datetime.minute in minute)
 				else return FALSE
-				if(now.hour in hour)
+				if(datetime.hour in hour)
 				else return FALSE
-				if(now.day in day)
+				if(datetime.day in day)
 				else return FALSE
-				if(now.month in month)
+				if(datetime.month in month)
 				else return FALSE
-				if(now.day_of_week in day_of_week)
+				if(datetime.day_of_week in day_of_week)
 				else return FALSE
 				last_exec = world.time
 				return TRUE
@@ -135,8 +133,9 @@ scheduler
 				src.interval = interval
 				while(active)
 					var/now = world.time
+					var/scheduler/datetime/datetime = new
 					for(var/scheduler/task/task in tasks)
-						if(task.timing.NextExecution(now))
+						if(task.timing.NextExecution(now, datetime))
 							task.Callback()
 							task.timing.start_time = now
 					sleep(src.interval)
