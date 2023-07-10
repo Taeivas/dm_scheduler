@@ -96,7 +96,7 @@ scheduler
 					else
 						return clamp(text2num(field), min_value, max_value)
 			NextExecution(now, scheduler/datetime/datetime)
-				if((world.time - last_exec) >= 10)
+				if((now - last_exec) >= 10)
 				else return FALSE
 				if(datetime.second == 0)
 				else return FALSE
@@ -110,7 +110,7 @@ scheduler
 				else return FALSE
 				if(datetime.day_of_week in day_of_week)
 				else return FALSE
-				last_exec = world.time
+				last_exec = now
 				return TRUE
 
 	executor

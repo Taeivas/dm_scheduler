@@ -13,7 +13,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "scripts\#demo.dm"
+#include "scripts\demo.dm"
 #include "scripts\scheduler\scheduler.dm"
 // END_INCLUDE
 
