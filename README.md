@@ -6,7 +6,7 @@ The Scheduler module is designed to enable task scheduling with flexible timing 
 
 The `task` is the unit of work to be scheduled.
 
-### Constructor: `New(name, scheduler/timing/timing, datum/datum, callback, arguments)`
+### Constructor: `new /schdeduler/task (name, scheduler/timing/timing, datum/datum, callback, arguments)`
 
 Creates a new task.
 
@@ -40,7 +40,7 @@ Creates a new `datetime` instance, initializing the date and time to the current
 
 The `timing` provides timing information for tasks.
 
-### Constructor: `New(tick = 0, second = 0, minute = 0, hour = 0)`
+### Constructor: `new /scheduler/timing (tick = 0, second = 0, minute = 0, hour = 0)`
 
 Creates a new `timing` instance.
 
@@ -62,7 +62,7 @@ Creates a new `timing` instance.
 
 The `cron` allows cron-like scheduling.
 
-### Constructor: `New(minute = "*", hour = "*", day = "*", month = "*", day_of_week = "*")`
+### Constructor: `new /scheduler/timing/cron (minute = "*", hour = "*", day = "*", month = "*", day_of_week = "*")`
 
 Creates a new `cron` instance.
 
@@ -93,7 +93,7 @@ The `executor` runs tasks.
 
 The `scheduler` manages the scheduling and execution of tasks.
 
-### Constructor: `New(interval = world.tick_lag)`
+### Constructor: `new /scheduler/scheduler (interval = world.tick_lag)`
 
 Creates a new `scheduler` instance.
 
