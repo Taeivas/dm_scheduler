@@ -57,7 +57,7 @@ scheduler
 			interval
 		proc
 			NextExecution(now, scheduler/datetime/datetime)
-				return (start_time + interval) < now
+				return (start_time + interval) <= now
 		cron
 			New(minute = "*", hour = "*", day = "*", month = "*", day_of_week = "*")
 				src.minute = ParseField(minute, 0, 59)
